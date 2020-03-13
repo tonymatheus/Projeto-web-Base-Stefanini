@@ -1,6 +1,7 @@
 package com.stefanini.resource;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -29,6 +30,7 @@ public class EnderecoResource {
 	}
 
 	@POST
+	@Transactional
 	public Response obterListaEndereco(@Valid Endereco endereco) {
 		return Response.ok(enderecoServico.salvar(endereco)).build();
 	}
