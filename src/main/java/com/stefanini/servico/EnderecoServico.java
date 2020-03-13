@@ -4,6 +4,8 @@ import com.stefanini.dao.EnderecoDao;
 import com.stefanini.model.Endereco;
 import com.stefanini.util.IGenericService;
 
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import java.util.List;
@@ -22,6 +24,7 @@ public class EnderecoServico implements IGenericService<Endereco, Long> {
 
 
 	@Override
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public Endereco salvar(@Valid Endereco entity) {
 		return dao.salvar(entity);
 	}
